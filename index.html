@@ -2,48 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0"
+    />
     <meta name="referrer" content="never" />
     <title>Comic-Reader</title>
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-      }
-      img {
-        width: 100%;
-        height: initial;
-        margin-bottom: 10px;
-        vertical-align: top;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-      }
-    </style>
+    <link rel="stylesheet" href="./index.css" />
     <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
   </head>
   <body>
     <div class="container"></div>
-    <script>
-      function getQuery(name) {
-        const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i')
-        const r = window.location.search.substr(1).match(reg)
-        if (r != null) {
-          return unescape(r[2])
-        }
-        return null
-      }
-
-      document.title = getQuery('title')
-      eval(getQuery('script'))
-
-      let _html = ''
-      images.forEach(item => {
-        _html += `<img class="lazy" data-src="${item}" referrerpolicy="no-referrer" width="375" height="667" />`
-      })
-      document.querySelector('.container').innerHTML = _html
-
-      setTimeout(() => {
-        lazyload(document.querySelectorAll('.lazy'))
-      }, 0)
-    </script>
+    <script src="./index.js?v=1"></script>
   </body>
 </html>
