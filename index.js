@@ -7,7 +7,7 @@ function getQuery(name) {
   return null
 }
 
-// 执行的脚本必须提供title, images变量
+// script 执行的脚本必须提供String: title, Array<String>: images变量
 eval(getQuery('script'))
 document.title = title
 
