@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="never" />
-    <title></title>
+    <title>Comic-Reader</title>
     <style>
       * {
         padding: 0;
@@ -23,72 +23,27 @@
   <body>
     <div class="container"></div>
     <script>
-      const images = [
-        '03052531509',
-        '03052531510',
-        '03052531511',
-        '03052531512',
-        '03052531513',
-        '03052531514',
-        '03052531515',
-        '03052531516',
-        '03052531517',
-        '03052531518',
-        '03052531519',
-        '03052531520',
-        '03052531521',
-        '03052531522',
-        '03052531523',
-        '03052531524',
-        '03052531525',
-        '03052531526',
-        '03052631527',
-        '03052631528',
-        '03052631529',
-        '03052631530',
-        '03052631531',
-        '03052631532',
-        '03052631533',
-        '03052631534',
-        '03052631535',
-        '03052631536',
-        '03052631537',
-        '03052631538',
-        '03052631539',
-        '03052631540',
-        '03052631541',
-        '03052631542',
-        '03052631543',
-        '03052631544',
-        '03052631545',
-        '03052631546',
-        '03052631547',
-        '03052631548',
-        '03052631549',
-        '03052731550',
-        '03052731551',
-        '03052731552',
-        '03052731553',
-        '03052731554',
-        '03052731555',
-        '03052731556',
-        '03052731557',
-        '03052731558',
-        '03052731559',
-        '03052731560',
-        '03052731561',
-        '03052731562'
-      ]
-      let html = ''
+      function getQuery(name) {
+        const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i')
+        const r = window.location.search.substr(1).match(reg)
+        if (r != null) {
+          return unescape(r[2])
+        }
+        return null
+      }
+      const title = getQuery('title')
+      document.title = title
+
+      const script = getQuery('script')
+      eval(script)
 
       images.forEach(item => {
-        html += `<img class="lazy" data-src="https://a16c.gdbyhtl.net:64443/h29/201707/17/${item}.jpg.webp" referrerpolicy="no-referrer" width="375" height="667" />`
+        html += `<img class="lazy" data-src="${item}" referrerpolicy="no-referrer" width="375" height="667" />`
       })
       document.querySelector('.container').innerHTML = html
 
       setTimeout(() => {
-        const images = document.querySelectorAll('.lazy')
-        lazyload(images)
+        lazyload(document.querySelectorAll('.lazy'))
       }, 0)
     </script>
   </body>
