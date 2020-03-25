@@ -31,11 +31,9 @@
         }
         return null
       }
-      const title = getQuery('title')
-      document.title = title
 
-      const script = getQuery('script')
-      eval(script)
+      document.title = getQuery('title')
+      eval(getQuery('script'))
 
       images.forEach(item => {
         html += `<img class="lazy" data-src="${item}" referrerpolicy="no-referrer" width="375" height="667" />`
