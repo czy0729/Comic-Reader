@@ -12,11 +12,15 @@ eval(getQuery('script'))
 document.title = title
 
 let _html = ''
-images.forEach(item => {
-  _html += `<img class="lazy" data-src="${item}" referrerpolicy="no-referrer" width="375" height="667" />`
+
+images.forEach((item, index) => {
+  _html += `<img class="lazy lazy-${index}" data-src="${item}" referrerpolicy="no-referrer" width="375" height="667" />`
 })
 document.querySelector('.container').innerHTML = _html
 
 setTimeout(() => {
-  lazyload(document.querySelectorAll('.lazy'))
+  lazyload(document.querySelectorAll('.lazy-0'))
+  setTimeout(() => {
+    lazyload(document.querySelectorAll('.lazy'))
+  }, 1000)
 }, 0)
