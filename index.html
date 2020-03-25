@@ -35,10 +35,11 @@
       document.title = getQuery('title')
       eval(getQuery('script'))
 
+      let _html = ''
       images.forEach(item => {
-        html += `<img class="lazy" data-src="${item}" referrerpolicy="no-referrer" width="375" height="667" />`
+        _html += `<img class="lazy" data-src="${item}" referrerpolicy="no-referrer" width="375" height="667" />`
       })
-      document.querySelector('.container').innerHTML = html
+      document.querySelector('.container').innerHTML = _html
 
       setTimeout(() => {
         lazyload(document.querySelectorAll('.lazy'))
